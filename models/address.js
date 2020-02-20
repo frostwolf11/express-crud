@@ -24,5 +24,5 @@ let addressSchema = new mongoose.Schema({
   }
 });
 
-let userAddress = database.model("userAddress", addressSchema); 
-module.exports = userAddress
+let userAddress = database.model("userAddress", addressSchema);
+module.exports = userAddress;

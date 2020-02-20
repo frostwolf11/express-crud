@@ -3,8 +3,8 @@ const user_addressModel = require("../models/address");
 
 exports.userProfile = async (req, res, next) => {
   let userDetail = await userModel
-    .find({})
-    .populate('mine_address')
+    .find({ _id: req.headers.authorization })
+    .populate("mine_address");
   if (userDetail) {
     res.status(200).json({
       Profile: userDetail

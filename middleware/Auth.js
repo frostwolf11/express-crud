@@ -11,7 +11,7 @@ exports.Auth = async (req, res, next) => {
   });
   let date = new Date();
 
-  if (Number(date.getHours()) > Number(token_expireTime.expire_time)) { 
+  if (Number(date.getHours()) > Number(token_expireTime.expire_time)) {
     return res.status(401).json({
       message: "Access token expired"
     });

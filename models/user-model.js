@@ -28,11 +28,13 @@ let userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  mine_address: [{
+  mine_address: [
+    {
       type: mongoose.Schema.Types.ObjectId,
       ref: "userAddress"
-    }]
+    }
+  ]
 });
 
 let User = database.model("User", userSchema);
-module.exports = User
+module.exports = User;
