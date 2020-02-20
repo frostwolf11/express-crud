@@ -18,11 +18,9 @@ exports.userRegister = async (req, res) => {
         .digest("hex"),
       username: req.body.username
     });
-    let doc_id;
     let doc = await user_create.save();
-    doc_id = doc._id;
     res.status(201).json({
-      created_id: doc_id
+      created_id: doc._id
     });
   } catch (error) {
     res.status(500).json({
