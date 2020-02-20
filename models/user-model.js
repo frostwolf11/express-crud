@@ -5,9 +5,9 @@ let userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    index : {
-        unique:true
-    },
+    index: {
+      unique: true
+    }
   },
   firstname: {
     type: String,
@@ -20,14 +20,21 @@ let userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    index : {
-        unique:true
-    },
+    index: {
+      unique: true
+    }
   },
   password: {
     type: String,
     required: true
-  }
+  },
+  mine_address: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "userAddress"
+    }
+  ]
 });
 
-module.exports = database.model('User', userSchema)
+let User = database.model("User", userSchema);
+module.exports = User;

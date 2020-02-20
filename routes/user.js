@@ -7,7 +7,9 @@ const middleware = require("../middleware/Auth");
 
 router.post("/register", user_registerController.userRegister);
 router.post("/login", user_loginController.userLogin);
-router.get("/get", middleware.Auth, user_profileController.userProfile);
+router.get("/get/:id", middleware.Auth, user_profileController.userProfile);
 router.delete("/delete", middleware.Auth, user_profileController.userDelete);
+router.get("/list/:page", user_profileController.userProfiles);
+router.post("/address", middleware.Auth, user_profileController.userAddres);
 
 module.exports = router;
