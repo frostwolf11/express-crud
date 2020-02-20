@@ -1,9 +1,13 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const userController = require('../controller/user-register')
+const user_registerController = require("../controller/user-register");
+const user_loginController = require("../controller/user-login");
+const user_profileController = require("../controller/user-profile");
+const middleware = require("../middleware/Auth");
 
-
-/* GET users listing. */
-router.post('/register', userController.userRegister);
+router.post("/register", user_registerController.userRegister);
+router.post("/login", user_loginController.userLogin);
+router.get("/get", middleware.Auth, user_profileController.userProfile);
+router.delete("/delete", middleware.Auth, user_profileController.userDelete);
 
 module.exports = router;
