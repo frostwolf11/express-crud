@@ -1,3 +1,4 @@
 {
-    "url" :  "mongodb://localhost:27017/user-creation"
+    "url" :  "mongodb://localhost:27017/user-creation",
+    "jwtSecret" : "qwerty" 
 }
