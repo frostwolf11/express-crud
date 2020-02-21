@@ -27,14 +27,7 @@ let userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  },
-  mine_address: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "userAddress"
-    }
-  ]
+  }
 });
 
-let User = database.model("User", userSchema);
-module.exports = User;
+module.exports = database.model("User", userSchema);

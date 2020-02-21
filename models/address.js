@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const database = require("../database");
 
 let addressSchema = new mongoose.Schema({
+  user_id : {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "userAddress"
+  },
   address: {
     type: String,
     required: true
@@ -24,5 +28,4 @@ let addressSchema = new mongoose.Schema({
   }
 });
 
-let userAddress = database.model("userAddress", addressSchema);
-module.exports = userAddress;
+module.exports = database.model("userAddress", addressSchema);
