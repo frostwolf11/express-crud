@@ -6,8 +6,6 @@ const secret = require('../config')
 const mongoose = require('mongoose')
 
 exports.userProfile = async (req, res, next) => {
-  console.log(req.userData.user_id);
-  
   let userDetail = await userModel.aggregate(
     [{ $match : {_id: mongoose.Types.ObjectId(req.userData.user_id)}},
       { $lookup:
@@ -20,8 +18,7 @@ exports.userProfile = async (req, res, next) => {
       }
     ]
     )
-  console.log(userDetail);
-  
+
   if (userDetail) {
     res.status(200).json({
       Profile: userDetail
