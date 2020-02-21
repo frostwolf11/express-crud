@@ -5,4 +5,10 @@ const userCreationValidator = [
     check('username','username must not be empty').not().isEmpty()
 ]
 
-module.exports = {userCreationValidator}
+const userAddressValidator = [
+    check('address','address must not be empty').not().isEmpty(),
+    check('city','city must not be empty').not().isEmpty()
+]
+
+
+module.exports = {userCreationValidator,userAddressValidator}

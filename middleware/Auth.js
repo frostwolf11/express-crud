@@ -1,4 +1,3 @@
-const jwt = require('jsonwebtoken')
 const secret = require('../config')
 
 exports.Auth = async (req, res, next) => {
@@ -10,7 +9,9 @@ exports.Auth = async (req, res, next) => {
   let token = req.headers.authorization.split(" ");
   try{
     const checkJwt = await jwt.verify(token[1],secret.jwtSecret);
+    req.userData = checkJwt;  
     next();
+    
   }catch(error){
     return res.status(401).json({
       message: "Auth token invalid"

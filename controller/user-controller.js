@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 
 exports.userProfile = async (req, res, next) => {
   let userDetail = await userModel.aggregate(
-    [{ $match : {_id: mongoose.Types.ObjectId(req.userData.user_id)}},
+    [{ $match : {_id: mongoose.Types.ObjectId(req.user.user_id)}},
       { $lookup:
         {
           from: "useraddresses",
@@ -72,7 +72,7 @@ exports.userAddres = async (req, res, next) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: "Unable to create address"
+      message: error.message
     });
   }
 };
