@@ -7,8 +7,8 @@ const passport = require('passport');
 require('../passport-config/passport')(passport);
 
 router.post("/register", validators.userCreationValidator, userController.userRegister);
-router.post("/login", validators.userCreationValidator, userController.userLogin);
-router.get("/get/:id",passport.authenticate('jwt', { session : false }), userController.userProfile);
+router.post("/login", passport.authenticate('local',{session:true,failureRedirect: '/login'}),validators.userCreationValidator, userController.userLogin);
+router.get("/get/:id", userController.userProfile);
 router.delete("/delete", middleware.Auth, userController.userDelete);
 router.get("/list/:page", userController.userProfiles);
 router.post("/address", validators.userAddressValidator, middleware.Auth, userController.userAddres);
